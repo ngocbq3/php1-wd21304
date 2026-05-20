@@ -8,5 +8,9 @@
 </head>
 
 <body>
-    <nav>Menu</nav>
+    <nav>
+        <a href="index.php?act=home">Trang chủ</a> |
+        <a href="index.php?act=contact">Liên hệ</a> |
+        <a href="index.php?act=about">Giới thiệu</a>
+    </nav>
     <div>Banner</div>
