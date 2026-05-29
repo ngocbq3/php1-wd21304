@@ -15,7 +15,7 @@ class Database
         //Kết nối đến Database
         try {
             $conn = new PDO("mysql:host=$host; dbname=$db_name; charset=utf8; port=$port", $username, $password);
-            echo "Kết nối dữ liệu thành công"; //Câu lệnh test, nếu OK thì xóa đi
+            // echo "Kết nối dữ liệu thành công"; //Câu lệnh test, nếu OK thì xóa đi
             return $conn;
         } catch (PDOException $e) {
             echo "Lỗi kết nối: " . $e->getMessage();
