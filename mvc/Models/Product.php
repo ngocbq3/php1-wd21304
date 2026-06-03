@@ -31,12 +31,16 @@ class Product
     //Lấy dữ liệu sản phẩm theo danh mục
     public function productInCategory($category_id)
     {
-        $sql = "SELECT * FROM products WHERE category_id=$category_id ORDER BY id DESC";
+        //Câu lênh SQL có chưa tham số :category_id
+        $sql = "SELECT * FROM products WHERE category_id=:category_id ORDER BY id DESC";
 
         //Chuẩn bị câu lệnh SQL
         $stmt = $this->conn->prepare($sql);
+
+        //Truyền giá trị cho tham số
+        $params = ['category_id' => $category_id];
         //Thực thi
-        $stmt->execute();
+        $stmt->execute($params);
         //Lấy dữ liệu
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         //Trả về dữ liệu cho hàm
@@ -46,12 +50,14 @@ class Product
     //Lấy chi tiết 1 sản phẩm theo id
     public function find($id)
     {
-        $sql = "SELECT * FROM products WHERE id=$id";
+        $sql = "SELECT * FROM products WHERE id=:id";
 
         //Chuẩn bị câu lệnh SQL
         $stmt = $this->conn->prepare($sql);
+
         //Thực thi
-        $stmt->execute();
+        $params = ['id' => $id];
+        $stmt->execute($params);
         //Lấy dữ liệu
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         //Trả về dữ liệu cho hàm

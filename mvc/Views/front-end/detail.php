@@ -7,13 +7,12 @@
     </div>
 
     <div class="detail-content">
-      <h1>Áo thun nam cao cấp</h1>
+      <h1><?= $product['name'] ?></h1>
 
-      <p class="price">450.000đ</p>
+      <p class="price">$ <?= $product['price'] ?></p>
 
       <p>
-        Đây là sản phẩm chất lượng cao, chất liệu cotton mềm mại, thoáng mát
-        và phù hợp mọi độ tuổi.
+        <?= $product['description'] ?>
       </p>
 
       <button class="btn">Thêm vào giỏ hàng</button>
@@ -27,29 +26,13 @@
     <h2>Sản phẩm cùng loại</h2>
 
     <div class="product-list">
-      <div class="product-item">
-        <img src="images/product-1.jpg" alt="" />
-        <h3>Áo thể thao</h3>
-        <p>300.000đ</p>
-      </div>
-
-      <div class="product-item">
-        <img src="images/product-1.jpg" alt="" />
-        <h3>Áo polo</h3>
-        <p>500.000đ</p>
-      </div>
-
-      <div class="product-item">
-        <img src="images/product-1.jpg" alt="" />
-        <h3>Áo hoodie</h3>
-        <p>700.000đ</p>
-      </div>
-
-      <div class="product-item">
-        <img src="images/product-1.jpg" alt="" />
-        <h3>Áo khoác</h3>
-        <p>900.000đ</p>
-      </div>
+      <?php foreach ($productInCategory as $pro) : ?>
+        <div class="product-item">
+          <img src="images/product-1.jpg" alt="" />
+          <h3><?= $pro['name'] ?></h3>
+          <p> $ <?= $pro['price'] ?></p>
+        </div>
+      <?php endforeach ?>
     </div>
   </div>
 </section>
