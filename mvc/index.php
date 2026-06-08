@@ -25,6 +25,20 @@ switch ($act) {
         $contact = new ContactController;
         $contact->index();
         break;
+
+    //Admin
+    case 'admin':
+        $ctl = $_GET['ctl'] ?? '';
+        switch ($ctl) {
+            case '':
+            case 'products':
+                (new AdminProductController)->index();
+                break;
+                
+            default:
+                echo "<h1>404 File not found</h1>";
+        }
+        break;
     default:
         echo "<h1>404 File not found</h1>";
 }

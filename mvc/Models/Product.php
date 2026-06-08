@@ -28,6 +28,23 @@ class Product
         return $result;
     }
 
+    /**
+     * Phương thức getProducts lấy dữ liệu sản phẩm có cả danh mục
+     */
+    public function getProducts()
+    {
+        $sql = "SELECT p.*, c.name cate_name FROM products p JOIN categories c ON p.category_id=c.id ORDER BY p.id DESC";
+
+        //Chuẩn bị câu lệnh SQL
+        $stmt = $this->conn->prepare($sql);
+        //Thực thi
+        $stmt->execute();
+        //Lấy dữ liệu
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        //Trả về dữ liệu cho hàm
+        return $result;
+    }
+
     //Lấy dữ liệu sản phẩm theo danh mục
     public function productInCategory($category_id)
     {
