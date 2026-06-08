@@ -24,4 +24,18 @@ class ProductController
 
         include __DIR__ . "/../Views/front-end/detail.php";
     }
+
+    //Hiển thị danh sách sản phẩm theo danh mục
+    public function index()
+    {
+        //Lấy id danh mục trên URL
+        $id = $_GET['id'] ?? null;
+        //Lấy sản phẩm
+        $products = $this->productModel->productInCategory($id);
+
+        //Lấy danh sách danh mục để hiển thị trên menu
+        $categories = (new Category)->all();
+
+        include __DIR__ . "/../Views/front-end/products.php";
+    }
 }
