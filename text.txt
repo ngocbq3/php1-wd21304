@@ -1,0 +1,5 @@
+Các nội dung nền tảng vẫn còn giá trị sử dụng trong thực tế.
+Tuy nhiên cần cập nhật thêm:
+UML 2.x.
+Agile và Scrum.
+User Story.

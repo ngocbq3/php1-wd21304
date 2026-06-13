@@ -34,7 +34,12 @@ switch ($act) {
             case 'products':
                 (new AdminProductController)->index();
                 break;
-                
+            case 'product-create':
+                (new AdminProductController)->create();
+                break;
+            case 'product-store':
+                (new AdminProductController)->store();
+                break;
             default:
                 echo "<h1>404 File not found</h1>";
         }

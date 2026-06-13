@@ -80,4 +80,65 @@ class Product
         //Trả về dữ liệu cho hàm
         return $result;
     }
+
+    /**
+     * @method create: thêm dữ liệu vào bảng products
+     * @param: $name, $image, $price, $quantity, $description, $category_id
+     */
+    public function create($name, $image, $price, $quantity, $description, $category_id)
+    {
+        $sql = "INSERT INTO products(name, image, price, quantity, description, category_id) VALUES(:name, :image, :price, :quantity, :description, :category_id)";
+
+        //CHuẩn bị
+        $stmt = $this->conn->prepare($sql);
+
+        //Truyền dữ liệu cho các placeholder
+        $stmt->bindValue(':name', $name);
+        $stmt->bindValue(':image', $image);
+        $stmt->bindValue(':price', $price);
+        $stmt->bindValue(':quantity', $quantity);
+        $stmt->bindValue(':description', $description);
+        $stmt->bindValue(':category_id', $category_id);
+
+        //Thực thi
+        $stmt->execute();
+    }
+
+    /**
+     * @method update: cập nhật dữ liệu
+     * @param: $id, $name, $image, $price, $quantity, $description, $category_id
+     */
+    public function update($id, $name, $image, $price, $quantity, $description, $category_id)
+    {
+        $sql = "UPDATE products SET name=:name, image=:image, price=:price, quantity=:quantity, description=:description, category_id=:category_id WHERE id=:id";
+
+        //CHuẩn bị
+        $stmt = $this->conn->prepare($sql);
+
+        //Truyền dữ liệu cho các placeholder
+        $stmt->bindValue(':name', $name);
+        $stmt->bindValue(':image', $image);
+        $stmt->bindValue(':price', $price);
+        $stmt->bindValue(':quantity', $quantity);
+        $stmt->bindValue(':description', $description);
+        $stmt->bindValue(':category_id', $category_id);
+        $stmt->bindValue(':id', $id);
+
+        //Thực thi
+        $stmt->execute();
+    }
+
+    /**
+     * @method delete: xóa dữ liệu
+     * @param: $id
+     */
+    public function delete($id)
+    {
+        $sql = "DELETE FROM product WHERE id=:id";
+
+        $stmt = $this->conn->prepare($sql);
+
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+    }
 }
